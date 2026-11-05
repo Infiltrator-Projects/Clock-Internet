@@ -49,5 +49,5 @@ Each package owns only this provider and its passive documentation. Its `Replace
 ## Installed documentation
 
 Only the clock .so in /System/Resources/Clocks/ and its illustrated PDF in
-/System/Resources/Documentation/Clock-Internet/ are installed. Developer records
+/System/Resources/Documentation/Clock-Internet.pdf are installed. Developer records
 stay in GitHub; native build evidence is in Debian control metadata.

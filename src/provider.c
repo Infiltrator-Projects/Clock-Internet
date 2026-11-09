@@ -28,7 +28,7 @@ static bool clock_render(const InfiltratrTemporalClockProvider *provider,
     uint64_t tick;
 
     (void)provider; (void)locale; (void)latitude; (void)longitude;
-    (void)offset;
+    (void)offset; (void)vertical;
     tick = ticks_at((uint64_t)clock_civil_modulo(
             clock_civil_modulo(instant, CLOCK_MICROSECONDS_PER_DAY) +
                 INT64_C(3600000000), CLOCK_MICROSECONDS_PER_DAY),

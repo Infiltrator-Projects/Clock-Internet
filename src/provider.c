@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#define CLOCK_MICROSECONDS_PER_SECOND INT64_C(1000000)
 #define CLOCK_MICROSECONDS_PER_DAY INT64_C(86400000000)
 
 static uint64_t ticks_at(uint64_t phase, uint64_t per_day)
@@ -27,11 +26,9 @@ static bool clock_render(const InfiltratrTemporalClockProvider *provider,
     char text[128] = {0};
     int written = -1;
     uint64_t tick;
-    const char *sep = vertical ? "\n" : ":";
 
     (void)provider; (void)locale; (void)latitude; (void)longitude;
-    (void)instant; (void)offset; (void)seconds; (void)vertical;
-    (void)tick; (void)sep;
+    (void)offset;
     tick = ticks_at((uint64_t)clock_civil_modulo(
             clock_civil_modulo(instant, CLOCK_MICROSECONDS_PER_DAY) +
                 INT64_C(3600000000), CLOCK_MICROSECONDS_PER_DAY),
@@ -54,7 +51,7 @@ static bool clock_next_tick(const InfiltratrTemporalClockProvider *provider,
                             double latitude, double longitude, uint32_t *milliseconds)
 {
     uint64_t phase, units, tick, boundary, remaining, result;
-    (void)provider; (void)latitude; (void)longitude; (void)offset; (void)seconds;
+    (void)provider; (void)latitude; (void)longitude; (void)offset;
     if (milliseconds == NULL) return false;
     units = seconds ? UINT64_C(100000) : UINT64_C(1000);
     phase = (uint64_t)clock_civil_modulo(
